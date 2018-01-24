@@ -23,8 +23,14 @@ var server = http.createServer((req, res) => {
 })
 
 var io = socketIO(server);
-server.listen(port, () => {
-     console.log(`Server is up on ${port}`);
-    
-    
-})
+io.on('connection', (socket) => {
+    console.log(' Connected');
+    socket.on('hello', (data) => {
+        console.log(data);
+    })
+
+    socket.on('disconnect', () => {
+        
+    })
+});
+server.listen(port, () => { console.log(`Server is up on ${port}`); })
