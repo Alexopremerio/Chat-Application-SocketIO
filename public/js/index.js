@@ -10,7 +10,7 @@ var ChatApp = (function () {
     function socketIO(){
         console.log(socket);
         console.log('this: ' +this);
-        socket.emit('hello', 'heelll');
+        socket.emit('helllo', 'heelll');
 
 
     }
