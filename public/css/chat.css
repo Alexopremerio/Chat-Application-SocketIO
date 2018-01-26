@@ -1,0 +1,56 @@
+
+
+#wrapper {
+ display: grid;
+
+ grid-gap: 10px;
+ padding: 10px;
+
+ background-color: azure;
+ height: 600px;
+ max-height: 600px;
+}
+
+.chat {
+    font-size: 12px;
+    border: 1px solid;
+    padding: 5px;
+}
+/*
+sent messages
+*/
+.content {
+ 
+ grid-row: 1/6;
+ grid-column: 1/5;
+
+ /*
+ override grid autoexpand
+ */
+ min-height: 0;
+ overflow: scroll;
+ 
+}
+
+#message-container {
+    
+}
+/*
+list of users in room
+*/
+.list {
+ 
+ grid-row: 1/7;
+ grid-column: 5/5;
+
+}
+/*
+type and send
+*/
+.user {
+ 
+ grid-row: 6;
+ grid-column: 1/5;
+ min-height: 0;
+ height: 70px;
+}
