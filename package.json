@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/allexsson/Chat-Application-SocketIO.git"
+    "url": "git+https://github.com/Alexopremerio/Chat-Application-SocketIO.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/allexsson/Chat-Application-SocketIO/issues"
+    "url": "https://github.com/Alexopremerio/Chat-Application-SocketIO/issues"
   },
-  "homepage": "https://github.com/allexsson/Chat-Application-SocketIO#readme",
+  "homepage": "https://github.com/Alexopremerio/Chat-Application-SocketIO#readme",
   "dependencies": {
     "connect": "^3.6.5",
     "server-static": "^2.0.5",
