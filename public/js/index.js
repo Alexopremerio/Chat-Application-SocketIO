@@ -7,7 +7,7 @@ var ChatApp = (function(){
     var _sendDOM = null;
     var _textDOM = null;
     var _userObj = {};
-    var _socket = io('http://localhost:3000/');
+    var _socket = io();
    console.log(_socket);
     function init(){
     
