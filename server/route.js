@@ -17,12 +17,10 @@ var routing = (req,res)=> {
         render(res,'chatroom.html','/html');
         return;
         } else {
-            //console.log(" ERRROROREOREOREROROE");
+            console.log(" ERRROROREOREOREROROE");
           //  err404(res);
         }
-        // error
-        
-}
+    }
 
 var err404 = (res) => {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
