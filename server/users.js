@@ -1,3 +1,4 @@
+
  const Users = {
 
     userList: [],
@@ -7,14 +8,23 @@
          console.log("UserList", Users.userList);
      },
  
-     getUser:  (id) => {
-        var user = Users.userList.filter((users) => users.id == id);
-        return user[0];
+     getUser:  (room) => {
+        var user = Users.userList.filter((users) => users.room == room);
+        return user;
      },
 
      remove: (userObj) => {
        var user =  Users.userList.splice(Users.userList.indexOf(userObj), 1);
        console.log("Removed user", user);
+     },
+
+     createUserObj: (postData,userId) => {
+      var userObj = {
+        name: postData[0],
+        room: postData[1],
+        id: userId
+      };
+      return userObj;
      }
 
  }

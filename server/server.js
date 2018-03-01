@@ -1,57 +1,79 @@
+
+
 const http = require('http');
-const connect = require('connect');
-const serveStatic = require('serve-static');
+const url = require('url');
 
 const path = require('path');
-const socketIO = require('socket.io');
-
-var {Users} = require('./users.js');
-var {newMessage} = require('./message.js');
 
 
+const {routing} = require('./route.js');
+const {render} = require('./render.js');
 
 
-const port = process.env.PORT || 3000;
-const publicPath = path.join(__dirname, '../public');
-var app = connect();
-app.use(serveStatic(publicPath));
-var server = http.createServer(app);
 
 
-var io = socketIO(server);
-io.on('connection', (socket) => {
-    console.log(" sockets connected ", io.engine.clientsCount);
-    socket.on('userJoin', (client) => {
-         
-        // fix if refresh page, clients dissconnect never fireds.
-       // Users.remove(client);
-        socket.user = client;
-        socket.join(client.room);
-        Users.add(socket.user);
-         
-        socket.emit('welcomeUser', (newMessage("Admin",`Welcome ${client.user}`)));
-        socket.broadcast.to(client.room).emit('welcomeUser', (newMessage('Admin',`${client.user} joined the room`)));
+
+   
+var server = http.createServer((req, res)=> {
+    if(req.method == 'POST'){
+        req.on('data', (data) => {
+            server.postData = data.toString();
+            console.log('server file ', server.postData);
+        });
+    }
+       
+    if(path.extname(req.url) === ".css" || path.extname(req.url) === ".js"){
+        var filename = req.url.split("/");
+        render(res,filename[2],filename[1]);
+    }
+    console.log("URLS :",req.url);
+    routing(req,res);
     });
 
-   
-
-    socket.on('sendMessage', (msg) => {
-        console.log("RAD 36",msg);
-        io.to(msg.room).emit('newMessage', (newMessage(msg.from,msg.text)));
-    })
     
+  /*  function style(request, response,filename,parentRoute) {
+        var extname = path.extname(filename)
+        var extMime = {
+            '.js': 'application/javascript',
+            '.css': 'text/css'  
+           };
+           var mimeType = extMime[extname];
+           console.log("MIMETYPE" ,mimeType);
+            response.writeHead(200, {'Content-Type': mimeType});
+            console.log("READ CSS FILE !!!!");
+            var fileContents = fs.readFileSync('public/'+parentRoute+'/' + filename, {encoding: "utf8"});
+            
+            response.write(fileContents);
+          response.end();
+        }
+    var home = function(req,res){
 
-    socket.on('disconnect', (err) => {
-        console.log("disconnected server", err);
-        Users.remove(socket.user);
+        if(req.url === "/") {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        view("index",{}, res);
+        res.end();
+        
+        } else if (req.url === "/chat") {
+            console.log('/chat : ', req.url);
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            view("chatroom",{}, res);
+            res.end();
+            } else {
+                error404(res);
+            }
 
 
-    })
+    }
 
-    socket.on('reconnecting', (id) => {
-            console.log("48",id);
-    })
+ 
+ 
 
-});
-server.listen(port, () => { console.log(`Server is up on ${port}`); })
-   
+    function view(templateName, values, response) {       
+
+        var fileContents = fs.readFileSync('public/' + templateName + '.html', {encoding: "utf8"});
+        reponse.write(fileContents);
+        
+      }*/
+
+module.exports = {server};
+//module.exports.postData = postData;
