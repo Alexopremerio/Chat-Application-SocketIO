@@ -1,9 +1,11 @@
+import { errMsg } from './render.js';
 
 const socketIO = require('socket.io');
 
 var {Users} = require('./users.js');
 var {newMessage} = require('./message.js');
 var {server} = require('./server.js');
+
 
 
 
@@ -18,9 +20,13 @@ var io = socketIO(server);
 io.on('connection', (socket) => {
   //  console.log(" sockets connected ", io.engine.clientsCount);
     socket.on('userJoin', () => {
-        
+            if(typeof server.postData == 'undefined'){
+                socket.user = Users.createUserObj(getParams(server.postData),socket.id);
+            } else {
+                socket.user = Users.createUserObj(getParams(server.postData),socket.id);
+            }
      //   console.log("26", server.postData);
-        socket.user = Users.createUserObj(getParams(server.postData),socket.id);
+       
         
        // socket.user = client;
         socket.join(socket.user.room);  
@@ -39,19 +45,13 @@ io.on('connection', (socket) => {
     })
 
     var updateOnlineList = (room) =>{
-     //   console.log('51 ',Users.getUser(room));
         io.to(room).emit('userInRoom',(Users.getUser(room)));
     }
     
     socket.on('disconnect', (err) => {
-      //  console.log("disconnected server", err);
+
         var room = socket.user.room;
-     //   console.log("51 dis USER = ",socket.user);
         Users.remove(socket.user);
-        server.postData = "undefined";
-        
-        // socket.user.room undefined in updateOnlineList
-        
         updateOnlineList(room);
     })
 
