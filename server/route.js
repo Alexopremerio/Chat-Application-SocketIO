@@ -17,11 +17,14 @@ var route = (req,res)=> {
             req.on('data', (data) => {
               console.log("POST DADATA",data);
             });
+            render.rend(res,'chatroom.html','/html');
+            console.log('/chat : ', req.url);
+        } else {
+            render.rend(res,'index.html','/html');
         }
-        console.log('/chat : ', req.url);
-        render.rend(res,'chatroom.html','/html');
+        
+        
         return;
-        } 
+        }
     }
-
 module.exports = {route};

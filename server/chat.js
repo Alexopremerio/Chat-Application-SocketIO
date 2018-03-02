@@ -1,4 +1,4 @@
-import { errMsg } from './render.js';
+
 
 const socketIO = require('socket.io');
 
@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   //  console.log(" sockets connected ", io.engine.clientsCount);
     socket.on('userJoin', () => {
             if(typeof server.postData == 'undefined'){
-                socket.user = Users.createUserObj(getParams(server.postData),socket.id);
+               /// redirect
             } else {
                 socket.user = Users.createUserObj(getParams(server.postData),socket.id);
             }
