@@ -2,7 +2,7 @@
   "name": "project",
   "version": "1.0.0",
   "description": "Chat Application with SocketIO",
-  "main": "ChatApp.js",
+  "main": "public/js/signIn.js",
   "scripts": {
     "start": "node server/chat.js"
   },
