@@ -66,11 +66,10 @@ var route = (req, res) => {
     
   }
   // Om sökväg inte finns
-   else {
-
+ /*  else {
         var found = register.find(item => item == req.url);
         if(typeof found == 'undefined') render.errMsg(res,"Wrong path, try '/' or '/chat' ")
-      }
+      }*/
 }
 
 /*
