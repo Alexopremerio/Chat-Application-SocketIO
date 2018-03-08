@@ -1,55 +1,67 @@
+/*
+  Kommunikation mellan server och klient.
+  Lyssnar på event och skickar.
+*/
+var chatApp = (function() {
 
 
+  var _socket = io();
 
-var ChatApp = (function(){
+  /*
+    Initierar applikation
+  */
+  function init() {
+    connectUser();
+  }
 
-    var _socket = io();
+  /*
+    Lyssnar på event från server och skickar event om ny klient.
+  */
+  function connectUser() {
 
-    function init(){
-       connectUser();
-    }
+    _socket.on('userInRoom', function(users) {
+      
+      domOutput.printOnlineUsers(users);
+    })
 
-    function connectUser(){
-        
-        // Lista clienter 
-        _socket.on('userInRoom', function(users){
-            DomOutput.userObject(users);
-        })
+    _socket.emit('userJoin');
+    _socket.on('welcomeUser', function(msg) {
+      domOutput.printMessage(msg.from, msg.text, utils.getTime(msg.time))
+    });
 
-        _socket.emit('userJoin');
-        _socket.on('welcomeUser', function(msg){
-                // init DOM references
-                DomOutput.printMessage(msg.from,msg.text,Utils.getTime(msg.time))
-            });
+    _socket.on('newMessage', function(msg) {
+      domOutput.printMessage(msg.from, msg.text, utils.getTime(msg.time))
+    });
 
-        _socket.on('newMessage', function(msg) {
-            DomOutput.printMessage(msg.from,msg.text,Utils.getTime(msg.time))
-        });
+    _socket.on('reconnect', function() {
+      console.log("reconnecting ")
+    })
+    _socket.on('connect_error', function(error) {
+      console.log('error', error);
+    });
 
-        _socket.on('reconnect', function(){
-            console.log("reconnecting ")
-        })
-        _socket.on('connect_error', function(error) {
-            console.log('error',error);
-          });
+    _socket.on('disconnect', function(err) {
+      console.log('you have been disconnected', err);
+    })
 
-        _socket.on('disconnect', function(err){
-            console.log('you have been disconnected',err);
-        })
+  }
 
-    }
-    
-    function sendMessage(msg){
-        _socket.emit('sendMessage',{
-            text: msg
-        });
-    }
-       
-
-    return {
-        init: init,
-        sendMessage: sendMessage
-    };
+  /*
+    Skickar meddelande till server.
+  */
+  function sendMessage(msg) {
+    _socket.emit('sendMessage', {
+      text: msg
+    });
+  }
+  
+  /*
+    Publika funktioner
+  */
+  return {
+    init: init,
+    sendMessage: sendMessage
+  };
 })();
 
-window.addEventListener('load',ChatApp.init);
+window.addEventListener('load', chatApp.init);

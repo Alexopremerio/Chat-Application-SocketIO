@@ -1,56 +1,121 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #283655;
+  margin: 0;
+}
 
+li {
+  font-size: 14px;
+}
+
+#RoomName h2 {
+  margin: 0;
+}
 
 #wrapper {
- display: grid;
-
- grid-gap: 10px;
- padding: 10px;
-
- background-color: azure;
- height: 600px;
- max-height: 600px;
+  padding: 0;
+  color: #000000;
+  height: 80vh;
+  width: 100%;
+  display: inline-block;
+  position: absolute;
+  margin: 0;
 }
 
 .chat {
-    font-size: 12px;
-    border: 1px solid;
-    padding: 5px;
+  font-size: 12px;
+  position: absolute;
+  background-color: #efefef;
+  background-color: #ffffff;
+  box-shadow: 20 0 20 0 rgba(0, 0, 0, 0.2);
 }
+
 /*
 sent messages
 */
+
 .content {
- 
- grid-row: 1/6;
- grid-column: 1/5;
-
- /*
- override grid autoexpand
- */
- min-height: 0;
- overflow: scroll;
- 
+  width: 80%;
+  height: 70vh;
+  min-height: 0;
+  overflow: scroll;
+  display: inline-block;
 }
 
-#message-container {
-    
-}
 /*
 list of users in room
 */
-.list {
- 
- grid-row: 1/7;
- grid-column: 5/5;
 
+.list {
+  width: 20%;
+  margin-left: 80%;
+  display: inline-block;
+  height: 80vh;
+  background-color: #ffffff;
+  text-align: center;
 }
+
+.list p {
+  font-size: 16px;
+}
+
+.list ul {
+  padding: 0;
+}
+
 /*
 type and send
 */
+
 .user {
- 
- grid-row: 6;
- grid-column: 1/5;
- min-height: 0;
- height: 70px;
+  margin-top: 70vh;
+  height: 10vh;
+  width: 80%;
+  background-color: #eeeeee;
+}
+
+#textMsg {
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 10px;
+  width: 50%;
+}
+
+#sendMsg {
+  padding: 12px;
+  width: 80px;
+  margin-left: 20px;
+}
+
+#RoomName {
+  color: #ffffff;
+  padding: 15px;
+}
+
+li {
+  list-style-type: none;
+}
+
+#messages {
+  padding-left: 0px;
+  padding: 10px;
+}
+
+#messages li div:first-child span {
+  font-size: 13px;
+  color: brown;
+}
+
+/* span time */
+
+#messages li div:first-child span:last-child {
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+/* message */
+
+#messages li div:last-child span {
+  font-size: 12px;
+  margin-left: 10px;
 }

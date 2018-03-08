@@ -2,7 +2,7 @@
   "name": "project",
   "version": "1.0.0",
   "description": "Chat Application with SocketIO",
-  "main": "ChatApp.js.js",
+  "main": "ChatApp.js",
   "scripts": {
     "start": "node server/chat.js"
   },
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/Alexopremerio/Chat-Application-SocketIO#readme",
   "dependencies": {
-    "connect": "^3.6.5",
     "server-static": "^2.0.5",
     "socket.io": "^2.0.4"
   }

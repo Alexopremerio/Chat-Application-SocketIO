@@ -1,3 +1,68 @@
-body{
-    background-color: cornflowerblue;
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to left, #1d273c, #151d2b);
+}
+
+#form-wrapper {
+  width: 200px;
+  height: auto;
+  background-color: #283655;
+  color: white;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  position: fixed;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+input {
+  font-family: 'Roboto';
+  background: #f2f2f2;
+  border: 0;
+  height: 20px;
+  width: 150px;
+  padding: 5px;
+  margin: 0;
+}
+
+#submitBtn {
+  margin-top: 10px;
+  width: 160px;
+  padding: 7px;
+  cursor: pointer;
+  background-color: #1c1d26;
+  color: #fff;
+  border: 0;
+}
+
+#submitBtn:hover, #submitBtn:active, #submitBtn:focus {
+  background-color: #272937;
+}
+
+#title {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#form-wrapper form {
+  top: 10%;
+  text-align: center;
+}
+
+#form-wrapper form div {
+  margin-top: 20px;
+}
+
+#active-rooms {
+  padding: 10px;
+}
+
+span {
+  margin-top: 30px;
+}
+
+#active-rooms button {
+  float: left;
+  margin-bottom: 10px;
 }

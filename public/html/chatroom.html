@@ -5,35 +5,32 @@
         <title>ChatApp</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="/socket.io/socket.io.js"></script>
-        <script src="./js/Utils.js"></script>
-        <script src="./js/DomOutput.js"></script>
-        <script src="./js/ChatApp.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./js/domOutput.js"></script>
+        <script src="./js/chatApp.js"></script>
         <link rel="stylesheet" type="text/css" href="./css/chat.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       </head>
       <body>
          
-                <h1>chat room</h1>
         <div id="RoomName">
+            <h2>Room {{room}}</h2>
           </div>
           
 
           <div id="wrapper">
               <div class="chat content">
-                  <h2>
-                    chat content
-                  </h2>
                   <div id=message-container>
                   <ul id="messages"></ul>
                 </div>
               </div>
               <div class="chat list">
-                  <h2>Online users</h2>
+                  <p>Online users</p>
                   <ul id="onlineUsers"></ul>
               </div>
               <div class="chat user">
-                  <h2>send text</h2>
-                  <input id="text" type="text">
-                  <input id="send" type="button" value="send">
+                  <input id="textMsg" type="text" placeholder="message">
+                  <input id="sendMsg" type="button" value="send">
               </div>
           </div>
        

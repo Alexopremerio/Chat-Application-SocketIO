@@ -1,20 +1,21 @@
-var Utils = (function(){
+/*
+  Utils 
+*/
+var utils = (function() {
 
-    function getTime(ms){
-        var date = new Date(ms);
-        var time =date.toString().split(" ");
-        return time[4].slice(0,5);
-    }
-        
-    
-    function getParams(uri){
-        var temp = [];
-        uri.split("&").forEach(function(item){temp.push(item.split("=")[1]);}); 
-        return temp;
-    }
+  /*
+    Konverterar meddelandes tid från server.
+  */
+  function getTime(ms) {
+    var date = new Date(ms);
+    var time = date.toString().split(" ");
+    return time[4].slice(0, 5);
+  }
 
-    return {
-        getTime: getTime,
-        getParams: getParams
-    }
+  /*
+    Publika funktioner
+  */
+  return {
+    getTime: getTime,
+  }
 }())
