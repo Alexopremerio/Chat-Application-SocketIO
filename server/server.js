@@ -11,7 +11,6 @@ const querystring = require('querystring');
 */
 var render = require('./render.js');
 var {Users} = require('./users.js');
-var {register} = require('./register.js');
 
 /*
   Skapa server 
@@ -20,9 +19,11 @@ var server = http.createServer((req, res) => {
 
  
   // .css och .js filer
+
   if (path.extname(req.url) === ".css" || path.extname(req.url) === ".js") {
-    var filename = req.url.split("/");
-    render.rend(res, filename[2], filename[1]);
+    var filename = path.parse(req.url);
+    render.rend(res, filename.base, filename.dir);
+    return;
   }
 
    // HTML filer
@@ -37,11 +38,13 @@ var server = http.createServer((req, res) => {
 var route = (req, res) => {
 
   // Ingångssida
+ 
   if (req.url === "/") {
   
     var obj = {
       rooms: Users.activeRooms()
     };
+    
     render.rend(res, 'index.html', '/html', obj);
     return;
   }
@@ -67,8 +70,7 @@ var route = (req, res) => {
   }
   // Om sökväg inte finns
    else {
-        var found = register.find(item => item == req.url);
-        if(typeof found == 'undefined') render.errMsg(res,"Wrong path, try '/' or '/chat' ")
+        render.errMsg(res,"Wrong path, try '/' or '/chat' ")
       }
 }
 

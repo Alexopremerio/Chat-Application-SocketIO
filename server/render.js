@@ -12,12 +12,13 @@ var render = (res, filename, parentRoute, values) => {
   res.writeHead(200, {
     'Content-Type': getContentType(filename)
   });
-  var fileContents = fs.readFileSync('public/' + parentRoute + '/' + filename, {
-    encoding: "utf8"
-  });
-  fileContents = replaceContent(values, fileContents);
-  res.write(fileContents);
+  fs.readFile('public' + parentRoute + '/' + filename, 'utf-8',(err,data) => {
+    if(err) throw err;
+    data = replaceContent(values, data);
+  res.write(data);
   res.end();
+  })
+  
 }
 
 /*
@@ -34,7 +35,7 @@ var errMsg = (res, msg) => {
 /*
  tar filändelse och pararihop med rätt MIME typ
 */
-var getContentType = (filename) => {
+var getContentType = filename => {
   var extMime = {
     '.js': 'application/javascript',
     '.css': 'text/css',
@@ -62,7 +63,7 @@ var replaceContent = (values, file) => {
 /*
  Template renderare för aktiva rum på ingångssidan
 */
-var replaceContentArray = (arr) => {
+var replaceContentArray = arr => {
   var rooms = "";
   arr.forEach((key) => rooms += "<button>" + key + "</button>");
   return rooms;

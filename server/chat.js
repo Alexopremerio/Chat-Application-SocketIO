@@ -37,17 +37,13 @@ io.on('connection', (socket) => {
   });
 
   // inkommande medelande, skickar ut till samtliga i rummet.
-  socket.on('sendMessage', (msg) => {
-    io.to(socket.user.room).emit('newMessage', (newMessage(socket.user.name, msg.text)));
-  })
+  socket.on('sendMessage', msg => io.to(socket.user.room).emit('newMessage', (newMessage(socket.user.name, msg.text))));
 
   /*
    Lägg till använadre
   */
-  var userJoin = (user) => {
-    socket.join(user);
-  }
-
+  var userJoin = user => socket.join(user);
+  
   /* 
   Uppdatera listan av användare i ett rum
   */
@@ -59,8 +55,9 @@ io.on('connection', (socket) => {
     Users.remove(socket.user);
     updateOnlineList(room);
   })
-  socket.on('reconnecting', (id) => {})
+
 });
+
 
 // Server port
 const port = process.env.PORT || 3000;
