@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>ChatApp</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="application/javascript" src="/socket.io/socket.io.js"></script>
-        <script type="application/javascript" src="/js/utils.js"></script>
-        <script type="application/javascript" src="../js/domOutput.js"></script>
-        <script type="application/javascript" src="./js/chatApp.js"></script>
-        <link rel="stylesheet" type="text/css" href="./css/chat.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-      </head>
-      <body>
-         
-        <div id="RoomName">
-            <h2>Room {{room}}</h2>
-          </div>
-          
 
-          <div id="wrapper">
-              <div class="chat content">
-                  <div id=message-container>
-                  <ul id="messages"></ul>
-                </div>
-              </div>
-              <div class="chat list">
-                  <p>Online users</p>
-                  <ul id="onlineUsers"></ul>
-              </div>
-              <div class="chat user">
-                  <input id="textMsg" type="text" placeholder="message">
-                  <input id="sendMsg" type="button" value="send">
-              </div>
-          </div>
-       
-      </body>
+<head>
+  <meta charset="utf-8">
+  <title>ChatApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./css/chat.css">
+  <script type="application/javascript" src="./socket.io/socket.io.js"></script>
+  <script type="application/javascript" src="./js/utils.js"></script>
+  <script type="application/javascript" src="./js/domOutput.js"></script>
+  <script type="application/javascript" src="./js/chatApp.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="RoomName">
+    <h2>Room {{room}}</h2>
+  </div>
+
+
+  <div id="wrapper">
+    <div class="chat content">
+      <div id=message-container>
+        <ul id="messages"></ul>
+      </div>
+    </div>
+    <div class="chat list">
+      <p>Online users</p>
+      <ul id="onlineUsers"></ul>
+    </div>
+    <div class="chat user">
+      <input id="textMsg" type="text" placeholder="message">
+      <input id="sendMsg" type="button" value="send">
+    </div>
+  </div>
+
+</body>
+
 </html>

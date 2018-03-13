@@ -10,7 +10,7 @@ const querystring = require('querystring');
   Importerade filer
 */
 var render = require('./render.js');
-var {Users} = require('./users.js');
+var {Users} = require('./Users.js');
 
 /*
   Skapa server 

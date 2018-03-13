@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>ChatApp</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="./css/login.css">
-        <script type="application/javascript" src="./js/signIn.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-      </head>
-      <body>
-         
-          <div id="form-wrapper">
-              <div id="title">
-                    <h3>Chat</h3>
-              </div>
-           
-          
-         <form id="form-submit" action="/chat" method="POST">
-         <div id="name">
-             <input type="text" name="name" placeholder="username" autofocus required>
-         </div>
-         <div id="room">
-                <input type="text" name="room" placeholder="room">
-         </div>
-         <button id="submitBtn" type="submit">Join</button>
-         
-         
-        </form>
-        <span>Active Rooms:</span>
-        <div id="active-rooms">
-            {{rooms}}
-         </div>
+
+<head>
+  <meta charset="utf-8">
+  <title>ChatApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./css/login.css">
+  <script type="application/javascript" src="./js/signIn.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="form-wrapper">
+    <div id="title">
+      <h3>Chat</h3>
     </div>
-      </body>
+
+
+    <form id="form-submit" action="/chat" method="POST">
+      <div id="name">
+        <input type="text" name="name" placeholder="username" autofocus required>
+      </div>
+      <div id="room">
+        <input type="text" name="room" placeholder="room">
+      </div>
+      <button id="submitBtn" type="submit">Join</button>
+
+
+    </form>
+    <span>Active Rooms:</span>
+    <div id="active-rooms">
+      {{rooms}}
+    </div>
+  </div>
+</body>
+
 </html>

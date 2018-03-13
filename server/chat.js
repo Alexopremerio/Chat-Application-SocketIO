@@ -8,7 +8,7 @@ const socketIO = require('socket.io');
 */
 var {
   Users
-} = require('./users.js');
+} = require('./Users.js');
 var {
   newMessage
 } = require('./message.js');
@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
 
 
 // Server port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 server.listen(port, () => {
   console.log(`Server is up on ${port}`);
